@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gonzalo Porta — QA Technical Lead</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Gonzalo Porta, QA Technical Lead en Buenos Aires. Automatización web, mobile y backend con Python, Playwright y Appium.">
+<meta property="og:title" content="Gonzalo Porta — QA Technical Lead">
+<meta property="og:description" content="Automatización web, mobile y backend. Arquitectura de soluciones de testing reutilizables.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one dark column on a test-grid, giant two-line name, dated timeline, chip stack, numbered repos. Accent = the orange of the CV. */
+:root{
+  --bg:#08080a; --bg-2:#101013; --bg-3:#17171b;
+  --text:#f1efec; --dim:#8d8a86; --muted:#4d4b49; --border:#1f1e21;
+  --accent:#ff8f4a; --accent-ink:#140a03; --pass:#7ee08a;
+  --f-display:'Syne',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Epilogue',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.45;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 20%,#000 30%,transparent 85%)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+html[data-lang="es"] [lang="en"]{display:none!important}
+html[data-lang="en"] [lang="es"]{display:none!important}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;align-items:center;gap:24px;padding-block:18px}
+.logo{font-family:var(--f-display);font-weight:800;letter-spacing:.08em;text-decoration:none;font-size:15px}
+.logo b{color:var(--accent)}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a,.lang button{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s}
+.nav ul a:hover{color:var(--text)}
+.lang{display:flex;border:1px solid var(--border);border-radius:2px}
+.lang button{background:none;border:0;padding:5px 9px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+
+/* hero */
+.hero{padding-block:clamp(56px,10vw,120px) clamp(48px,8vw,96px)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(60px,14.5vw,168px);line-height:.86;letter-spacing:-.035em;margin:22px 0 30px}
+.hero h1 span{display:block}
+.hero h1 .ac{color:var(--accent)}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--dim);max-width:34em;margin:0}
+.lede strong{color:var(--text);font-weight:500}
+.stackline{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-top:14px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.btn{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 22px;border:1px solid var(--border);transition:background .25s var(--ease),color .25s,border-color .25s}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:500}
+.btn.primary:hover{background:var(--text);border-color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.status{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:56px;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.status .ok{color:var(--pass)}
+
+/* sections */
+section.block{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--border)}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:44px}
+.sh .n{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.sh h2{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1;margin:0;text-wrap:balance}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,6vw,72px);align-items:start}
+.stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);background:var(--bg-2)}
+.stat{padding:26px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat:nth-child(2n){border-right:0}.stat:nth-last-child(-n+2){border-bottom:0}
+.stat .v{font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:10px}
+.about p{font-size:clamp(17px,1.8vw,19px);color:var(--dim);margin:0 0 18px;max-width:36em}
+.about p strong{color:var(--text);font-weight:500}
+.now{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:26px}
+.now b{color:var(--accent);font-weight:400}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border)}
+.job{position:relative;padding:0 0 52px 34px}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-5px;top:12px;width:9px;height:9px;background:var(--bg);border:1px solid var(--dim)}
+.job.cur::before{background:var(--accent);border-color:var(--accent)}
+.jh{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
+.job h3{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-.015em;margin:0;line-height:1.1}
+.date{font-family:var(--f-mono);font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:10px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 20%,transparent)}
+.role{font-style:italic;color:var(--dim);margin:8px 0 14px}
+.job p{margin:0 0 12px;max-width:44em;color:var(--dim)}
+.job ul.pts{margin:0 0 16px;padding:0;list-style:none;max-width:46em}
+.job ul.pts li{position:relative;padding-left:20px;margin-bottom:6px;color:var(--dim)}
+.job ul.pts li::before{content:"→";position:absolute;left:0;color:var(--muted);font-family:var(--f-mono);font-size:13px}
+.lib{margin:22px 0 18px;padding:22px 24px;border:1px solid var(--border);background:var(--bg-2);max-width:48em}
+.lib .lt{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.lib h4{font-family:var(--f-display);font-weight:700;font-size:20px;margin:0 0 8px;letter-spacing:-.01em}
+.lib h4 code{font-family:var(--f-mono);font-weight:500;font-size:.9em;color:var(--text)}
+.lib p{color:var(--dim);margin:0 0 12px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--dim);margin:4px 0 14px}
+.flow span{border:1px solid var(--border);padding:5px 9px;background:var(--bg)}
+.flow span.core{border-color:var(--accent);color:var(--accent)}
+.flow i{font-style:normal;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--f-mono);font-size:11px;color:var(--dim);border:1px solid var(--border);padding:4px 9px;background:var(--bg-2)}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--border)}
+.cat{padding:26px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cat:nth-child(3n){border-right:0}.cat:nth-last-child(-n+3){border-bottom:0}
+.cat h3{font-family:var(--f-mono);font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.cat .tags span{font-size:12px;color:var(--text);background:var(--bg-3)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.proj{background:var(--bg);padding:30px 28px;display:flex;flex-direction:column;gap:12px;text-decoration:none;transition:background .25s var(--ease)}
+a.proj:hover{background:var(--bg-2)}
+a.proj:hover .arrow{color:var(--accent);transform:translate(3px,-3px)}
+.ph{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pn{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.arrow{font-family:var(--f-mono);color:var(--dim);transition:transform .25s var(--ease),color .25s}
+.proj h3{font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:-.01em;margin:0;overflow-wrap:anywhere}
+.proj .pr{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.proj p{margin:0;color:var(--dim);flex:1}
+
+/* contact */
+.contact h2.big{font-family:var(--f-display);font-weight:800;font-size:clamp(40px,7.5vw,92px);line-height:.95;letter-spacing:-.03em;margin:0 0 36px;text-wrap:balance}
+.contact h2.big em{color:var(--accent);font-style:normal}
+.mail{display:inline-flex;flex-wrap:wrap;align-items:center;gap:14px;font-family:var(--f-display);font-weight:500;font-size:clamp(20px,3vw,30px);text-decoration:none;border-bottom:1px solid var(--muted);padding-bottom:6px;overflow-wrap:anywhere}
+.mail:hover{border-color:var(--accent);color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+footer{border-top:1px solid var(--border);padding-block:28px;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:820px){
+  .nav ul{display:none}
+  .lang{margin-left:auto}
+  .about{grid-template-columns:1fr}
+  .stack{grid-template-columns:1fr 1fr}
+  .cat:nth-child(3n){border-right:1px solid var(--border)}
+  .cat:nth-child(2n){border-right:0}
+  .cat:nth-last-child(-n+3){border-bottom:1px solid var(--border)}
+  .cat:nth-last-child(-n+2){border-bottom:0}
+  .projects{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .stack{grid-template-columns:1fr}
+  .cat{border-right:0!important;border-bottom:1px solid var(--border)!important}
+  .cat:last-child{border-bottom:0!important}
+  .job{padding-left:24px}
+  .stat .v{font-size:36px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 span{animation:rise .9s var(--ease) both}
+  .hero h1 span:nth-child(2){animation-delay:.08s}
+  @keyframes rise{from{transform:translateY(18px);opacity:.15}to{transform:none;opacity:1}}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="#top">G<b>.</b>PORTA</a>
+    <ul>
+      <li><a href="#about"><span lang="es">Sobre mí</span><span lang="en">About</span></a></li>
+      <li><a href="#experience"><span lang="es">Experiencia</span><span lang="en">Experience</span></a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects"><span lang="es">Proyectos</span><span lang="en">Projects</span></a></li>
+      <li><a href="#contact"><span lang="es">Contacto</span><span lang="en">Contact</span></a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" id="lang-es" data-set="es" aria-pressed="true">ES</button>
+      <button type="button" id="lang-en" data-set="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">// QA Technical Lead · Buenos Aires, Argentina</div>
+      <h1><span>GONZALO</span><span class="ac">PORTA</span></h1>
+      <p class="lede" lang="es">Diseño soluciones de testing que <strong>escalan entre equipos</strong>: automatización web, mobile y backend sobre una <strong>librería común de QA</strong> que conecta más de 10 repositorios.</p>
+      <p class="lede" lang="en">I design testing solutions that <strong>scale across teams</strong>: web, mobile and backend automation built on a <strong>shared QA library</strong> that connects 10+ repositories.</p>
+      <div class="stackline">Python · Pytest · Playwright · Appium · Locust · Allure · GCP</div>
+      <div class="cta">
+        <a class="btn primary" href="#experience"><span lang="es">Ver experiencia →</span><span lang="en">See experience →</span></a>
+        <a class="btn ghost" href="cv/Gonzalo_Porta_CV_ES.pdf" target="_blank" rel="noopener" lang="es">Descargar CV</a>
+        <a class="btn ghost" href="cv/Gonzalo_Porta_CV_EN.pdf" target="_blank" rel="noopener" lang="en">Download CV</a>
+      </div>
+      <div class="status" aria-hidden="true">
+        <span><span class="ok">●</span> <span lang="es">disponible para nuevas oportunidades</span><span lang="en">open to new opportunities</span></span>
+        <span>34°36′S · 58°22′O</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sh"><span class="n">01</span><h2><span lang="es">Sobre mí</span><span lang="en">About me</span></h2></div>
+      <div class="about">
+        <div class="stats">
+          <div class="stat"><div class="v">4+</div><div class="k"><span lang="es">años en QA</span><span lang="en">years in QA</span></div></div>
+          <div class="stat"><div class="v">4</div><div class="k"><span lang="es">empresas</span><span lang="en">companies</span></div></div>
+          <div class="stat"><div class="v">10+</div><div class="k"><span lang="es">repos sobre commons_qa</span><span lang="en">repos on commons_qa</span></div></div>
+          <div class="stat"><div class="v">100</div><div class="k"><span lang="es">releases de la librería</span><span lang="en">library releases</span></div></div>
+        </div>
+        <div>
+          <p lang="es">Soy <strong>QA Engineer</strong> con foco en <strong>automatización web, mobile y backend</strong> y en la arquitectura de soluciones de testing reutilizables. Lideré equipos y procesos de QA en fintech, banca y logística.</p>
+          <p lang="es">Hoy trabajo sobre una billetera digital, en flujos de <strong>identidad y biometría</strong>, y soy owner de <strong>commons_qa</strong>, la librería interna que comparten los frameworks de automatización. Me interesa que las pruebas sean código mantenible: versionado, revisable y fácil de reutilizar.</p>
+          <p lang="en">I am a <strong>QA Engineer</strong> focused on <strong>web, mobile and backend automation</strong> and on designing reusable test solution architecture. I have led QA teams and processes in fintech, banking and logistics.</p>
+          <p lang="en">Today I work on a digital wallet, covering <strong>identity and biometric</strong> flows, and I own <strong>commons_qa</strong>, the internal library shared by our automation frameworks. I care about tests being maintainable code: versioned, reviewable and easy to reuse.</p>
+          <div class="now"><b>&gt;</b> <span lang="es">Actualmente: QA Technical Lead en Nación Servicios</span><span lang="en">Currently: QA Technical Lead at Nación Servicios</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sh"><span class="n">02</span><h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2></div>
+      <ol class="tl">
+        <li class="job cur">
+          <div class="jh"><h3>Nación Servicios</h3><span class="date">2025 — <span lang="es">actualidad</span><span lang="en">present</span></span></div>
+          <div class="badge"><span lang="es">Rol actual</span><span lang="en">Current role</span></div>
+          <div class="role"><span lang="es">QA Technical Lead (Referente técnico de QA) · Billetera digital</span><span lang="en">QA Technical Lead · Digital wallet</span></div>
+          <ul class="pts" lang="es">
+            <li>Testing manual y automatizado de Onboarding, Authenticator y verificación de identidad (Face + ID, liveness, KYC).</li>
+            <li>Casos de borde biométricos: spoofing, imágenes de baja calidad y documentos vencidos.</li>
+            <li>Automatización web (Playwright + Pytest) y mobile iOS / Android (Appium) en Python POO, con capas pages y services.</li>
+            <li>Suites en pipelines de Azure DevOps con reportes Allure; flujos asincrónicos con BigQuery y Pub/Sub; performance con k6 y Locust.</li>
+          </ul>
+          <ul class="pts" lang="en">
+            <li>Manual and automated testing of Onboarding, Authenticator and identity verification (Face + ID, liveness, KYC).</li>
+            <li>Biometric edge cases: spoofing attempts, low-quality images and expired documents.</li>
+            <li>Web (Playwright + Pytest) and iOS / Android mobile (Appium) automation in OOP Python, with pages and services layers.</li>
+            <li>Suites in Azure DevOps pipelines with Allure reports; async flows with BigQuery and Pub/Sub; performance with k6 and Locust.</li>
+          </ul>
+          <div class="lib">
+            <div class="lt"><span lang="es">Hito · arquitectura de soluciones</span><span lang="en">Milestone · solution architecture</span></div>
+            <h4><span lang="es">Owner de</span><span lang="en">Owner of</span> <code>commons_qa</code></h4>
+            <p lang="es">Diseñé y mantengo la librería Python que conecta los repositorios de automatización mobile (iOS / Android), backend y web a través de una capa común de integraciones.</p>
+            <p lang="en">I designed and maintain the Python library that connects the mobile (iOS / Android), backend and web automation repositories through a shared integration layer.</p>
+            <div class="flow" aria-label="toolkit → services → systems">
+              <span>mobile</span><span>backend</span><span>web</span><i>→</i><span class="core">toolkit</span><i>→</i><span class="core">services</span><i>→</i><span>Auth · Wallet · Oracle · BigQuery · Pub/Sub · GCS · BrowserStack</span>
+            </div>
+            <ul class="pts" lang="es">
+              <li>Consumida por más de 10 repos de QA; versionada por tags (v3.33, 100 releases) con extras por proyecto.</li>
+              <li>Release automatizado en GitLab CI (semantic-release) que dispara la sincronización en los repos consumidores.</li>
+              <li>Más de 40 scripts de toolkit para preparar y limpiar datos, CLIs de CI y git hooks con Conventional Commits.</li>
+            </ul>
+            <ul class="pts" lang="en">
+              <li>Used by 10+ QA repos; versioned by tags (v3.33, 100 releases) with per-project extras.</li>
+              <li>Automated release in GitLab CI (semantic-release) that triggers sync in consumer repos.</li>
+              <li>40+ toolkit scripts for test data setup and cleanup, CI CLIs and Conventional Commits git hooks.</li>
+            </ul>
+          </div>
+          <div class="tags"><span>Python</span><span>Pytest</span><span>Playwright</span><span>Appium</span><span>BrowserStack</span><span>Locust</span><span>k6</span><span>Allure</span><span>Azure DevOps</span><span>GitLab CI</span><span>BigQuery</span><span>Pub/Sub</span><span>Oracle</span></div>
+        </li>
+
+        <li class="job">
+          <div class="jh"><h3>Zipnova</h3><span class="date">2024 — 2025</span></div>
+          <div class="role">QA Automation Lead</div>
+          <ul class="pts" lang="es">
+            <li>Proceso de QA de punta a punta y documentación centralizada.</li>
+            <li>Adopción de Linear para la gestión de proyectos.</li>
+            <li>Pruebas E2E web y mobile, frontend y API.</li>
+          </ul>
+          <ul class="pts" lang="en">
+            <li>Built an end-to-end QA process with centralized documentation.</li>
+            <li>Drove adoption of Linear for project management.</li>
+            <li>E2E testing across web and mobile, frontend and API.</li>
+          </ul>
+          <div class="tags"><span>Playwright</span><span>TypeScript</span><span>WebdriverIO</span><span>Appium</span><span>JavaScript</span><span>AWS</span></div>
+        </li>
+
+        <li class="job">
+          <div class="jh"><h3>Nuevo Banco del Chaco</h3><span class="date">2023 — 2024</span></div>
+          <div class="role">QA Automation Lead</div>
+        </li>
+
+        <li class="job">
+          <div class="jh"><h3>MailAmericas</h3><span class="date">2022 — 2024</span></div>
+          <div class="role">QA Automation Engineer SSR</div>
+          <ul class="pts" lang="es">
+            <li>Colecciones automatizadas de API en Postman (JavaScript).</li>
+            <li>Diseño, ejecución y documentación de casos de prueba; soporte UAT y estimaciones.</li>
+            <li>Integración continua, consultas SQL y análisis de logs.</li>
+          </ul>
+          <ul class="pts" lang="en">
+            <li>Automated API test collections in Postman (JavaScript).</li>
+            <li>Test case design, execution and documentation; UAT support and estimates.</li>
+            <li>Continuous integration, SQL queries and log analysis.</li>
+          </ul>
+          <div class="tags"><span>Postman</span><span>Jenkins</span><span>Docker</span><span>GitLab CI/CD</span><span>DB2</span><span>MySQL</span><span>PostgreSQL</span><span>MariaDB</span><span>Datadog</span></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="stack">
+    <div class="wrap">
+      <div class="sh"><span class="n">03</span><h2>Stack</h2></div>
+      <div class="stack">
+        <div class="cat"><h3><span lang="es">Lenguajes</span><span lang="en">Languages</span></h3><div class="tags"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span></div></div>
+        <div class="cat"><h3><span lang="es">Automatización</span><span lang="en">Automation</span></h3><div class="tags"><span>Pytest</span><span>Playwright</span><span>Appium</span><span>WebdriverIO</span><span>BrowserStack</span><span>Postman</span></div></div>
+        <div class="cat"><h3>Performance</h3><div class="tags"><span>k6</span><span>Locust</span><span>JMeter</span></div></div>
+        <div class="cat"><h3>CI/CD</h3><div class="tags"><span>Azure DevOps</span><span>GitLab CI</span><span>GitHub Actions</span><span>Jenkins</span><span>Docker</span></div></div>
+        <div class="cat"><h3><span lang="es">Cloud y datos</span><span lang="en">Cloud &amp; data</span></h3><div class="tags"><span>BigQuery</span><span>Pub/Sub</span><span>GCS</span><span>AWS</span><span>Oracle</span><span>SQLAlchemy</span></div></div>
+        <div class="cat"><h3><span lang="es">Reportes y otros</span><span lang="en">Reporting &amp; other</span></h3><div class="tags"><span>Allure</span><span>Git</span><span>Linux / macOS</span><span>AI Agents</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="sh"><span class="n">04</span><h2><span lang="es">Proyectos</span><span lang="en">Projects</span></h2></div>
+      <div class="projects">
+        <div class="proj">
+          <div class="ph"><span class="pn">01</span><span class="arrow" title="Privado"><span lang="es">privado</span><span lang="en">private</span></span></div>
+          <h3>commons_qa</h3>
+          <div class="pr"><span lang="es">Owner · librería interna</span><span lang="en">Owner · internal library</span></div>
+          <p lang="es">Capa común de integraciones entre los frameworks mobile, backend y web. Versionada por tags, con extras por proyecto y release automatizado.</p>
+          <p lang="en">Shared integration layer for the mobile, backend and web frameworks. Tag-versioned, with per-project extras and automated releases.</p>
+          <div class="tags"><span>Python</span><span>uv</span><span>GitLab CI</span><span>semantic-release</span></div>
+        </div>
+        <a class="proj" href="https://github.com/gportabopp/qa-mobile" target="_blank" rel="noopener">
+          <div class="ph"><span class="pn">02</span><span class="arrow">↗</span></div>
+          <h3>qa-mobile</h3>
+          <div class="pr"><span lang="es">Framework de automatización mobile</span><span lang="en">Mobile automation framework</span></div>
+          <p lang="es">Framework de pruebas de UI mobile con WebdriverIO y Appium en JavaScript.</p>
+          <p lang="en">Mobile UI test framework with WebdriverIO and Appium in JavaScript.</p>
+          <div class="tags"><span>WebdriverIO</span><span>Appium</span><span>JavaScript</span></div>
+        </a>
+        <a class="proj" href="https://github.com/gportabopp/Playwright-js" target="_blank" rel="noopener">
+          <div class="ph"><span class="pn">03</span><span class="arrow">↗</span></div>
+          <h3>Playwright-js</h3>
+          <div class="pr"><span lang="es">Framework UI + API</span><span lang="en">UI + API framework</span></div>
+          <p lang="es">Automatización de pruebas de UI y API con Playwright y reportes en Allure.</p>
+          <p lang="en">UI and API test automation with Playwright and Allure reports.</p>
+          <div class="tags"><span>Playwright</span><span>JavaScript</span><span>Allure</span></div>
+        </a>
+        <a class="proj" href="https://github.com/gportabopp/Playright-TS" target="_blank" rel="noopener">
+          <div class="ph"><span class="pn">04</span><span class="arrow">↗</span></div>
+          <h3>Playwright-TS</h3>
+          <div class="pr"><span lang="es">Framework en TypeScript</span><span lang="en">TypeScript framework</span></div>
+          <p lang="es">Base de automatización con Playwright en TypeScript.</p>
+          <p lang="en">Playwright automation base in TypeScript.</p>
+          <div class="tags"><span>Playwright</span><span>TypeScript</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <div class="sh"><span class="n">05</span><h2><span lang="es">Contacto</span><span lang="en">Contact</span></h2></div>
+      <h2 class="big"><span lang="es">¿Hablamos de <em>calidad</em>?</span><span lang="en">Let's talk <em>quality</em>.</span></h2>
+      <a class="mail" href="mailto:gonzaloporta17@gmail.com">gonzaloporta17@gmail.com <span aria-hidden="true">↗</span></a>
+      <div class="links">
+        <a class="btn ghost" href="https://github.com/gportabopp" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/gonzalo-porta-b53343184/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="cv/Gonzalo_Porta_CV_ES.pdf" target="_blank" rel="noopener">CV · ES</a>
+        <a class="btn ghost" href="cv/Gonzalo_Porta_CV_EN.pdf" target="_blank" rel="noopener">CV · EN</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Gonzalo Porta</span>
+    <span>QA Technical Lead · Buenos Aires</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btns=document.querySelectorAll('.lang button');
+  function set(l){
+    root.setAttribute('data-lang',l); root.lang=l;
+    btns.forEach(function(b){b.setAttribute('aria-pressed', b.dataset.set===l ? 'true':'false')});
+    try{localStorage.setItem('lang',l)}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('lang')}catch(e){}
+  var nav=(navigator.language||'es').slice(0,2);
+  set(saved || (nav==='es' ? 'es' : 'en'));
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set)})});
+})();
+</script>
+</body>
+</html>
