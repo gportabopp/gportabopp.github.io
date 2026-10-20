@@ -74,6 +74,12 @@ section.block{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--bor
 
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,6vw,72px);align-items:start}
+.aside{display:flex;flex-direction:column;gap:28px;min-width:0}
+.portrait{position:relative;width:min(100%,300px);aspect-ratio:1;max-width:100%;margin:0 auto}
+.portrait::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px dashed color-mix(in srgb,var(--accent) 55%,transparent)}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:2px solid var(--accent);filter:grayscale(.25) contrast(1.05);transition:filter .4s var(--ease)}
+.portrait:hover img{filter:none}
+.portrait .tag{position:absolute;right:2%;bottom:6%;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--bg);color:var(--accent);border:1px solid var(--border);padding:5px 9px}
 .stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);background:var(--bg-2)}
 .stat{padding:26px 22px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
 .stat:nth-child(2n){border-right:0}.stat:nth-last-child(-n+2){border-bottom:0}
@@ -208,11 +214,17 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <div class="wrap">
       <div class="sh"><span class="n">01</span><h2><span lang="es">Sobre mí</span><span lang="en">About me</span></h2></div>
       <div class="about">
+        <div class="aside">
+        <figure class="portrait">
+          <img src="img/gonzalo.jpg" alt="Gonzalo Porta" width="327" height="327" loading="lazy">
+          <figcaption class="tag">QA · Buenos Aires</figcaption>
+        </figure>
         <div class="stats">
           <div class="stat"><div class="v">4+</div><div class="k"><span lang="es">años en QA</span><span lang="en">years in QA</span></div></div>
           <div class="stat"><div class="v">4</div><div class="k"><span lang="es">empresas</span><span lang="en">companies</span></div></div>
           <div class="stat"><div class="v">10+</div><div class="k"><span lang="es">repos sobre commons_qa</span><span lang="en">repos on commons_qa</span></div></div>
           <div class="stat"><div class="v">100</div><div class="k"><span lang="es">releases de la librería</span><span lang="en">library releases</span></div></div>
+        </div>
         </div>
         <div>
           <p lang="es">Soy <strong>QA Engineer</strong> con foco en <strong>automatización web, mobile y backend</strong> y en la arquitectura de soluciones de testing reutilizables. Lideré equipos y procesos de QA en fintech, banca y logística.</p>
