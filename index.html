@@ -94,9 +94,13 @@ section.block{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--bor
 .tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border)}
 .job{position:relative;padding:0 0 52px 34px}
 .job:last-child{padding-bottom:0}
-.job::before{content:"";position:absolute;left:-5px;top:12px;width:9px;height:9px;background:var(--bg);border:1px solid var(--dim)}
+.job::before{content:"";position:absolute;left:-5px;top:18px;width:9px;height:9px;background:var(--bg);border:1px solid var(--dim)}
 .job.cur::before{background:var(--accent);border-color:var(--accent)}
 .jh{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
+.ttl{display:flex;align-items:center;gap:14px;min-width:0}
+.co{position:relative;flex:none;width:44px;height:44px;display:grid;place-items:center;background:var(--bg-3);border:1px solid var(--border);overflow:hidden}
+.co b{font-family:var(--f-mono);font-weight:500;font-size:13px;letter-spacing:.04em;color:var(--dim)}
+.co img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .job h3{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-.015em;margin:0;line-height:1.1}
 .date{font-family:var(--f-mono);font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
 .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:10px}
@@ -220,16 +224,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <figcaption class="tag">QA · Buenos Aires</figcaption>
         </figure>
         <div class="stats">
-          <div class="stat"><div class="v">4+</div><div class="k"><span lang="es">años en QA</span><span lang="en">years in QA</span></div></div>
-          <div class="stat"><div class="v">4</div><div class="k"><span lang="es">empresas</span><span lang="en">companies</span></div></div>
+          <div class="stat"><div class="v">6+</div><div class="k"><span lang="es">años en QA</span><span lang="en">years in QA</span></div></div>
+          <div class="stat"><div class="v">6</div><div class="k"><span lang="es">empresas</span><span lang="en">companies</span></div></div>
           <div class="stat"><div class="v">10+</div><div class="k"><span lang="es">repos sobre commons_qa</span><span lang="en">repos on commons_qa</span></div></div>
           <div class="stat"><div class="v">100</div><div class="k"><span lang="es">releases de la librería</span><span lang="en">library releases</span></div></div>
         </div>
         </div>
         <div>
-          <p lang="es">Soy <strong>QA Engineer</strong> con foco en <strong>automatización web, mobile y backend</strong> y en la arquitectura de soluciones de testing reutilizables. Lideré equipos y procesos de QA en fintech, banca y logística.</p>
+          <p lang="es">Soy <strong>QA Engineer</strong> con foco en <strong>automatización web, mobile y backend</strong> y en la arquitectura de soluciones de testing reutilizables. Lideré equipos y procesos de QA en fintech, banca, logística y consumo masivo.</p>
           <p lang="es">Hoy trabajo sobre una billetera digital, en flujos de <strong>identidad y biometría</strong>, y soy owner de <strong>commons_qa</strong>, la librería interna que comparten los frameworks de automatización. Me interesa que las pruebas sean código mantenible: versionado, revisable y fácil de reutilizar.</p>
-          <p lang="en">I am a <strong>QA Engineer</strong> focused on <strong>web, mobile and backend automation</strong> and on designing reusable test solution architecture. I have led QA teams and processes in fintech, banking and logistics.</p>
+          <p lang="en">I am a <strong>QA Engineer</strong> focused on <strong>web, mobile and backend automation</strong> and on designing reusable test solution architecture. I have led QA teams and processes in fintech, banking, logistics and consumer goods.</p>
           <p lang="en">Today I work on a digital wallet, covering <strong>identity and biometric</strong> flows, and I own <strong>commons_qa</strong>, the internal library shared by our automation frameworks. I care about tests being maintainable code: versioned, reviewable and easy to reuse.</p>
           <div class="now"><b>&gt;</b> <span lang="es">Actualmente: QA Technical Lead en Nación Servicios</span><span lang="en">Currently: QA Technical Lead at Nación Servicios</span></div>
         </div>
@@ -242,7 +246,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <div class="sh"><span class="n">02</span><h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2></div>
       <ol class="tl">
         <li class="job cur">
-          <div class="jh"><h3>Nación Servicios</h3><span class="date">2025 — <span lang="es">actualidad</span><span lang="en">present</span></span></div>
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>NS</b><img src="img/logos/nacion-servicios.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Nación Servicios</h3></div><span class="date">2025 — <span lang="es">actualidad</span><span lang="en">present</span></span></div>
           <div class="badge"><span lang="es">Rol actual</span><span lang="en">Current role</span></div>
           <div class="role"><span lang="es">QA Technical Lead (Referente técnico de QA) · Billetera digital</span><span lang="en">QA Technical Lead · Digital wallet</span></div>
           <ul class="pts" lang="es">
@@ -280,7 +284,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
         </li>
 
         <li class="job">
-          <div class="jh"><h3>Zipnova</h3><span class="date">2024 — 2025</span></div>
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>LG</b><img src="img/logos/loginter.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Loginter</h3></div><span class="date">2025 · <span lang="es">6 meses</span><span lang="en">6 months</span></span></div>
+          <div class="role">DevOps SSR</div>
+        </li>
+
+        <li class="job">
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>ZN</b><img src="img/logos/zipnova.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Zipnova</h3></div><span class="date">2024 — 2025</span></div>
           <div class="role">QA Automation Lead</div>
           <ul class="pts" lang="es">
             <li>Proceso de QA de punta a punta y documentación centralizada.</li>
@@ -296,12 +305,21 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
         </li>
 
         <li class="job">
-          <div class="jh"><h3>Nuevo Banco del Chaco</h3><span class="date">2023 — 2024</span></div>
-          <div class="role">QA Automation Lead</div>
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>NB</b><img src="img/logos/nuevo-banco-del-chaco.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Nuevo Banco del Chaco</h3></div><span class="date">2023 — 2024</span></div>
+          <div class="role"><span lang="es">QA Automation Lead · Billetera virtual y portal web</span><span lang="en">QA Automation Lead · Digital wallet &amp; web portal</span></div>
+          <ul class="pts" lang="es">
+            <li>Automatización mobile Android e iOS de la billetera virtual del banco.</li>
+            <li>Automatización del portal web del banco.</li>
+          </ul>
+          <ul class="pts" lang="en">
+            <li>Android and iOS mobile automation for the bank's digital wallet.</li>
+            <li>Automation of the bank's web portal.</li>
+          </ul>
+          <div class="tags"><span>Mobile automation</span><span>Android</span><span>iOS</span><span>Web automation</span></div>
         </li>
 
         <li class="job">
-          <div class="jh"><h3>MailAmericas</h3><span class="date">2022 — 2024</span></div>
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>MA</b><img src="img/logos/mailamericas.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>MailAmericas</h3></div><span class="date">2022 — 2024</span></div>
           <div class="role">QA Automation Engineer SSR</div>
           <ul class="pts" lang="es">
             <li>Colecciones automatizadas de API en Postman (JavaScript).</li>
@@ -314,6 +332,23 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
             <li>Continuous integration, SQL queries and log analysis.</li>
           </ul>
           <div class="tags"><span>Postman</span><span>Jenkins</span><span>Docker</span><span>GitLab CI/CD</span><span>DB2</span><span>MySQL</span><span>PostgreSQL</span><span>MariaDB</span><span>Datadog</span></div>
+        </li>
+        <li class="job">
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>MI</b><img src="img/logos/mondelez.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Mondelez International</h3></div><span class="date">2020 — 2022</span></div>
+          <div class="role">Jr. QA Tester → Ssr. QA Tester</div>
+          <ul class="pts" lang="es">
+            <li>Primera experiencia en IT: empecé como Jr. QA Tester y pasé a Ssr. QA Tester.</li>
+            <li>Pruebas funcionales de API (Postman) e integración; casos de prueba e historias de usuario con Gherkin BDD.</li>
+            <li>Pruebas de performance, carga y estrés con JMeter.</li>
+            <li>Consultas SQL (DDL, DML, DQL), análisis de logs y seguimiento de bugs hasta su cierre, en equipos Scrum.</li>
+          </ul>
+          <ul class="pts" lang="en">
+            <li>First IT role: started as Jr. QA Tester and was promoted to Ssr. QA Tester.</li>
+            <li>Functional API (Postman) and integration testing; test cases and user stories in Gherkin BDD.</li>
+            <li>Performance, load and stress testing with JMeter.</li>
+            <li>SQL queries (DDL, DML, DQL), log analysis and bug tracking through closure, in Scrum teams.</li>
+          </ul>
+          <div class="tags"><span>Postman</span><span>JMeter</span><span>Gherkin BDD</span><span>MySQL</span><span>PostgreSQL</span><span>SAP</span><span>Scrum</span></div>
         </li>
       </ol>
     </div>
