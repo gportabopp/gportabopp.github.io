@@ -91,11 +91,17 @@ section.block{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--bor
 .now b{color:var(--accent);font-weight:400}
 
 /* timeline */
-.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border)}
-.job{position:relative;padding:0 0 52px 34px}
-.job:last-child{padding-bottom:0}
-.job::before{content:"";position:absolute;left:-5px;top:18px;width:9px;height:9px;background:var(--bg);border:1px solid var(--dim)}
+.tl{position:relative;list-style:none;margin:0;padding:0;border-left:1px solid var(--border)}
+.tl-line{position:absolute;left:-1px;top:0;width:1px;height:0;background:linear-gradient(var(--accent),color-mix(in srgb,var(--accent) 35%,transparent));transition:height 2.2s var(--ease);pointer-events:none}
+.tl.active .tl-line{height:100%}
+.job{position:relative;padding:40px 0 44px 34px;border-bottom:1px solid var(--border);transition:padding-left .35s var(--ease)}
+.tl-line + .job{padding-top:4px;--pt:4px}
+.job:hover{padding-left:48px}
+.job:last-child{padding-bottom:0;border-bottom:0}
+.job::before{content:"";position:absolute;left:-5px;top:calc(var(--pt,40px) + 18px);width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--dim);transition:background .3s,border-color .3s,box-shadow .3s;z-index:1}
+.job:hover::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 60%,transparent)}
 .job.cur::before{background:var(--accent);border-color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.job,.job::before,.tl-line,.tags span{transition:none}}
 .jh{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
 .ttl{display:flex;align-items:center;gap:14px;min-width:0}
 .co{position:relative;flex:none;width:44px;height:44px;display:grid;place-items:center;background:var(--bg-3);border:1px solid var(--border);overflow:hidden}
@@ -120,7 +126,17 @@ section.block{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--bor
 .flow span.core{border-color:var(--accent);color:var(--accent)}
 .flow i{font-style:normal;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font-family:var(--f-mono);font-size:11px;color:var(--dim);border:1px solid var(--border);padding:4px 9px;background:var(--bg-2)}
+.tags span{font-family:var(--f-mono);font-size:11px;color:var(--dim);border:1px solid var(--border);padding:4px 9px;background:var(--bg-2);transition:color .2s,border-color .2s,background .2s}
+.tags span:hover{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:color-mix(in srgb,var(--accent) 6%,var(--bg-2))}
+.lvl{display:inline-block;margin-left:8px;font-style:normal;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);padding:2px 7px;vertical-align:2px}
+.steps{list-style:none;margin:6px 0 0;padding:0 0 0 22px;border-left:1px dashed var(--muted);max-width:48em}
+.step{position:relative;padding:4px 0 6px}
+.step::before{content:"";position:absolute;left:-27px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--dim)}
+.step.up::before{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 35%,var(--bg))}
+.sh2{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-bottom:10px}
+.pill{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;padding:4px 10px;border:1px solid var(--border);background:var(--bg-3);color:var(--text)}
+.step.up .pill{border-color:var(--accent);color:var(--accent)}
+.promo{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:14px 0 14px -4px}
 
 /* stack */
 .stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--border)}
@@ -244,7 +260,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <section class="block" id="experience">
     <div class="wrap">
       <div class="sh"><span class="n">02</span><h2><span lang="es">Experiencia</span><span lang="en">Experience</span></h2></div>
-      <ol class="tl">
+      <ol class="tl" id="timeline">
+        <li class="tl-line" aria-hidden="true"></li>
         <li class="job cur">
           <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>NS</b><img src="img/logos/nacion-servicios.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Nación Servicios</h3></div><span class="date">2025 — <span lang="es">actualidad</span><span lang="en">present</span></span></div>
           <div class="badge"><span lang="es">Rol actual</span><span lang="en">Current role</span></div>
@@ -281,11 +298,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
             </ul>
           </div>
           <div class="tags"><span>Python</span><span>Pytest</span><span>Playwright</span><span>Appium</span><span>BrowserStack</span><span>Locust</span><span>k6</span><span>Allure</span><span>Azure DevOps</span><span>GitLab CI</span><span>BigQuery</span><span>Pub/Sub</span><span>Oracle</span></div>
-        </li>
-
-        <li class="job">
-          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>LG</b><img src="img/logos/loginter.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Loginter</h3></div><span class="date">2025 · <span lang="es">6 meses</span><span lang="en">6 months</span></span></div>
-          <div class="role">DevOps SSR</div>
         </li>
 
         <li class="job">
@@ -334,21 +346,59 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <div class="tags"><span>Postman</span><span>Jenkins</span><span>Docker</span><span>GitLab CI/CD</span><span>DB2</span><span>MySQL</span><span>PostgreSQL</span><span>MariaDB</span><span>Datadog</span></div>
         </li>
         <li class="job">
-          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>MI</b><img src="img/logos/mondelez.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Mondelez International</h3></div><span class="date">2020 — 2022</span></div>
-          <div class="role">Jr. QA Tester → Ssr. QA Tester</div>
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>LG</b><img src="img/logos/loginter.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Loginter</h3></div><span class="date">2022 · <span lang="es">6 meses</span><span lang="en">6 months</span></span></div>
+          <div class="role">DevOps SSR <span class="lvl"><span lang="es">perfil Jr / Ssr</span><span lang="en">Jr / Ssr level</span></span></div>
           <ul class="pts" lang="es">
-            <li>Primera experiencia en IT: empecé como Jr. QA Tester y pasé a Ssr. QA Tester.</li>
-            <li>Pruebas funcionales de API (Postman) e integración; casos de prueba e historias de usuario con Gherkin BDD.</li>
-            <li>Pruebas de performance, carga y estrés con JMeter.</li>
-            <li>Consultas SQL (DDL, DML, DQL), análisis de logs y seguimiento de bugs hasta su cierre, en equipos Scrum.</li>
+            <li>Primer paso en DevOps, con un perfil Jr / Ssr en formación.</li>
+            <li>Pipelines de CI/CD con Jenkins, GitLab CI y GitHub Actions.</li>
+            <li>Contenedores con Docker y administración básica de Linux.</li>
+            <li>Nociones de servicios cloud en AWS y Google Cloud.</li>
           </ul>
           <ul class="pts" lang="en">
-            <li>First IT role: started as Jr. QA Tester and was promoted to Ssr. QA Tester.</li>
-            <li>Functional API (Postman) and integration testing; test cases and user stories in Gherkin BDD.</li>
-            <li>Performance, load and stress testing with JMeter.</li>
-            <li>SQL queries (DDL, DML, DQL), log analysis and bug tracking through closure, in Scrum teams.</li>
+            <li>First step into DevOps, at a growing Jr / Ssr level.</li>
+            <li>CI/CD pipelines with Jenkins, GitLab CI and GitHub Actions.</li>
+            <li>Containers with Docker and basic Linux administration.</li>
+            <li>Working knowledge of AWS and Google Cloud services.</li>
           </ul>
-          <div class="tags"><span>Postman</span><span>JMeter</span><span>Gherkin BDD</span><span>MySQL</span><span>PostgreSQL</span><span>SAP</span><span>Scrum</span></div>
+          <div class="tags"><span>Jenkins</span><span>GitLab CI</span><span>GitHub Actions</span><span>Docker</span><span>Linux</span><span>AWS</span><span>GCP</span></div>
+        </li>
+
+        <li class="job">
+          <div class="jh"><div class="ttl"><span class="co" aria-hidden="true"><b>MI</b><img src="img/logos/mondelez.png" alt="" loading="lazy" onerror="this.remove()"></span><h3>Mondelez International</h3></div><span class="date">2020 — 2022</span></div>
+          <div class="role"><span lang="es">Mi primera experiencia en IT · 2 años en QA</span><span lang="en">My first IT role · 2 years in QA</span></div>
+          <ol class="steps">
+            <li class="step up">
+              <div class="sh2"><span class="pill">Ssr. QA Tester</span><span class="date">feb 2021 — ene 2022 · <span lang="es">1 año</span><span lang="en">1 year</span></span></div>
+              <ul class="pts" lang="es">
+                <li>Pruebas funcionales de API (Postman) e integración.</li>
+                <li>Pruebas no funcionales con JMeter: performance, carga y estrés.</li>
+                <li>Consultas DDL, DML y DQL (MySQL, PostgreSQL) en equipos Scrum.</li>
+                <li>Casos de prueba e historias de usuario con Gherkin BDD.</li>
+              </ul>
+              <ul class="pts" lang="en">
+                <li>Functional API (Postman) and integration testing.</li>
+                <li>Non-functional testing with JMeter: performance, load and stress.</li>
+                <li>DDL, DML and DQL queries (MySQL, PostgreSQL) in Scrum teams.</li>
+                <li>Test cases and user stories in Gherkin BDD.</li>
+              </ul>
+              <div class="tags"><span>Postman</span><span>JMeter</span><span>MySQL</span><span>PostgreSQL</span><span>Gherkin BDD</span><span>Scrum</span></div>
+            </li>
+            <li class="promo" aria-hidden="true"><span lang="es">↑ ascenso a Ssr</span><span lang="en">↑ promoted to Ssr</span></li>
+            <li class="step">
+              <div class="sh2"><span class="pill">Jr. QA Tester</span><span class="date">feb 2020 — feb 2021 · <span lang="es">1 año 1 mes</span><span lang="en">1 year 1 month</span></span></div>
+              <ul class="pts" lang="es">
+                <li>Análisis de documentación funcional y comunicación con funcional y desarrollo.</li>
+                <li>Diseño, ejecución y seguimiento de casos de prueba con Gherkin BDD.</li>
+                <li>Análisis de logs con Git Bash; reporte y seguimiento de bugs hasta su cierre.</li>
+              </ul>
+              <ul class="pts" lang="en">
+                <li>Functional documentation analysis and close work with business analysts and developers.</li>
+                <li>Test case design, execution and tracking with Gherkin BDD.</li>
+                <li>Log analysis with Git Bash; bug reporting and tracking through closure.</li>
+              </ul>
+              <div class="tags"><span>SAP</span><span>Gherkin BDD</span><span>Git Bash</span><span>MySQL</span></div>
+            </li>
+          </ol>
         </li>
       </ol>
     </div>
@@ -442,6 +492,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   var nav=(navigator.language||'es').slice(0,2);
   set(saved || (nav==='es' ? 'es' : 'en'));
   btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set)})});
+  var tl=document.getElementById('timeline');
+  if(tl){
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tl.classList.add('active');io.disconnect()}})},{threshold:.05});
+      io.observe(tl);
+    } else { tl.classList.add('active'); }
+  }
 })();
 </script>
 </body>
